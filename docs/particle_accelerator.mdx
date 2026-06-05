@@ -26,6 +26,8 @@ The maximum distance is calculated with the following formula:
 
 This means that at higher speeds, the distance between guide blocks can be larger.
 
+The way to check, according to experimentation, if your guide rings are close enough togoether, is to take the number of blocks between the guide rings, and add 1 to that number. This is because, assumedly, the distance between rings is calculated from the middle of the guide-rings, so add 0.5 blocks to either end, or 1 block to the number you have counted.
+
 ---
 
 ## Particle Collisions
@@ -64,6 +66,12 @@ The following picture shows how the curve distance is being calculated in game. 
 <center>
 <ModAsset location="oritech:area/particle_dist_calc" width={800} />
 </center>
+
+This image is innacurate. It suggests that, for the corners, you use Pythagorean Theorem to calculate the distance between the rings, starting at the block that is perpendicular to both guide rings, to the block that the guide rings inhabit. This is slightly incorrect. From experimentation, and from the addendum above, you consider the distance between the inner corners of the guide rings. In the picture example, the guide rings are 3 blocks away from the corner in their respective directions. Thus, to accurately get the distance, you would take the side lengths to be 2.5, not 3, giving you a distance of 4.950 blocks, rather than the 4.243 blocks that the image proposes. The 2.5 side length is gotten by taking the distance from the center of the guide ring, 0.5 blocks, and then the two full blocks to reach the column, or row depending on how you are looking at it, that the other ring inhabits. Then, as this is a right, isoceles triangle, the side lengths are equal, and thus the formula is actually the following:
+
+> sqrt(2.5^2+2.5^2)
+
+You can change the 2.5 value to match your particular particle accelerator case.
 
 ---
 
